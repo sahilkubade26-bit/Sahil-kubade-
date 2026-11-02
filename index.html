@@ -1,34 +1,43 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sahiro</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: #ffffff;
-      text-align: center;
-      padding: 40px 20px;
-      margin: 0;
-    }
-    h1 { font-size: 36px; }
-    p { font-size: 18px; color: #cbd5e1; }
-    a {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
-      background: #3b82f6;
-      color: #ffffff;
-      text-decoration: none;
-      border-radius: 8px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sahil Kubade</title> <!-- BADLO: tab ka title -->
+<style>
+  :root { --bg:#0f172a; --card:#1e293b; --accent:#3b82f6; --text:#ffffff; --muted:#cbd5e1; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:Arial,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+  .wrap { max-width:600px; margin:0 auto; padding:40px 20px; text-align:center; }
+  h1 { font-size:34px; margin:10px 0; }
+  h2 { font-size:22px; margin-top:0; }
+  p { color:var(--muted); }
+  .card { background:var(--card); border-radius:12px; padding:20px; margin-top:20px; }
+  .btn { display:block; margin:10px 0; padding:12px; background:var(--accent); color:#fff; text-decoration:none; border-radius:8px; }
+</style>
 </head>
 <body>
-  <h1>Welcome to Sahiro</h1>
-  <p>Ye meri apni website hai.</p>
-  <a href="#">Mujhse Judo</a>
+<div class="wrap">
+
+  <h1>Sahil Kubade</h1> <!-- BADLO: tumhara naam -->
+  <p>Student | Creator | Learner</p> <!-- BADLO: ek line me tum kaun ho -->
+
+  <div class="card">
+    <h2>About Me</h2>
+    <p>Main B.Com ka student hu aur naye skills seekh raha hu. Yahan main apna kaam share karta hu.</p> <!-- BADLO: apni baat -->
+  </div>
+
+  <div class="card">
+    <h2>Mere Links</h2>
+    <a class="btn" href="https://youtube.com/@yourchannel">YouTube Channel</a> <!-- BADLO: apna link -->
+    <a class="btn" href="https://instagram.com/yourid">Instagram</a> <!-- BADLO: apna link -->
+  </div>
+
+  <div class="card">
+    <h2>Contact</h2>
+    <p>Email: yourname@gmail.com</p> <!-- BADLO: apna email -->
+  </div>
+
+</div>
 </body>
 </html>
