@@ -3,41 +3,140 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sahil Kubade</title>
+<title>Sahil Kubade | Portfolio</title>
+<meta name="description" content="Sahil Kubade ki official website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root { --bg:#0f172a; --card:#1e293b; --accent:#3b82f6; --text:#ffffff; --muted:#cbd5e1; }
-  * { box-sizing: border-box; }
-  body { margin:0; font-family:Arial,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
-  .wrap { max-width:600px; margin:0 auto; padding:40px 20px; text-align:center; }
-  h1 { font-size:34px; margin:10px 0; }
-  h2 { font-size:22px; margin-top:0; }
-  p { color:var(--muted); }
-  .card { background:var(--card); border-radius:12px; padding:20px; margin-top:20px; }
-  .btn { display:block; margin:10px 0; padding:12px; background:var(--accent); color:#fff; text-decoration:none; border-radius:8px; }
+  :root {
+    --bg:#0b1020; --card:rgba(255,255,255,0.06); --border:rgba(255,255,255,0.12);
+    --text:#f1f5f9; --muted:#94a3b8; --a1:#6366f1; --a2:#06b6d4;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body {
+    font-family:'Poppins',Arial,sans-serif; background:var(--bg); color:var(--text);
+    line-height:1.7; overflow-x:hidden;
+    background-image:radial-gradient(circle at 15% 10%,rgba(99,102,241,.25),transparent 40%),
+                     radial-gradient(circle at 85% 30%,rgba(6,182,212,.18),transparent 40%);
+    background-attachment:fixed;
+  }
+  nav {
+    position:fixed; top:0; width:100%; z-index:10; display:flex; justify-content:space-between;
+    align-items:center; padding:14px 20px; background:rgba(11,16,32,.8);
+    backdrop-filter:blur(10px); border-bottom:1px solid var(--border);
+  }
+  .logo { font-weight:700; font-size:18px; background:linear-gradient(90deg,var(--a1),var(--a2));
+    -webkit-background-clip:text; background-clip:text; color:transparent; }
+  nav ul { list-style:none; display:flex; gap:16px; }
+  nav a { color:var(--muted); text-decoration:none; font-size:14px; }
+  nav a:hover { color:var(--text); }
+  section { max-width:900px; margin:0 auto; padding:90px 20px 30px; }
+  .hero { text-align:center; padding-top:130px; }
+  .avatar {
+    width:110px; height:110px; border-radius:50%; margin:0 auto 20px; display:flex;
+    align-items:center; justify-content:center; font-size:38px; font-weight:700;
+    background:linear-gradient(135deg,var(--a1),var(--a2)); box-shadow:0 0 40px rgba(99,102,241,.5);
+  }
+  .hero h1 { font-size:clamp(32px,8vw,56px); line-height:1.2; }
+  .grad { background:linear-gradient(90deg,var(--a1),var(--a2));
+    -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .hero p { color:var(--muted); margin:16px auto 28px; max-width:520px; }
+  .btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+  .btn {
+    padding:12px 26px; border-radius:999px; text-decoration:none; font-weight:600; font-size:15px;
+    transition:transform .2s;
+  }
+  .btn:hover { transform:translateY(-3px); }
+  .btn.primary { background:linear-gradient(90deg,var(--a1),var(--a2)); color:#fff; }
+  .btn.ghost { border:1px solid var(--border); color:var(--text); background:var(--card); }
+  h2 { font-size:28px; margin-bottom:18px; text-align:center; }
+  .sub { color:var(--muted); text-align:center; margin-bottom:28px; }
+  .glass {
+    background:var(--card); border:1px solid var(--border); border-radius:16px; padding:22px;
+    backdrop-filter:blur(8px);
+  }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
+  .glass h3 { font-size:18px; margin-bottom:6px; }
+  .glass p { color:var(--muted); font-size:14px; }
+  .links { display:flex; flex-direction:column; gap:12px; max-width:420px; margin:0 auto; }
+  .links a {
+    display:block; text-align:center; padding:14px; border-radius:12px; text-decoration:none;
+    color:var(--text); background:var(--card); border:1px solid var(--border); font-weight:500;
+    transition:all .2s;
+  }
+  .links a:hover { border-color:var(--a1); transform:translateY(-2px); }
+  .contact { text-align:center; }
+  .contact a { color:var(--a2); text-decoration:none; }
+  footer { text-align:center; color:var(--muted); font-size:13px; padding:40px 20px; }
+  .fade { opacity:0; transform:translateY(24px); transition:all .7s ease; }
+  .fade.show { opacity:1; transform:none; }
+  @media (max-width:520px) { nav ul { gap:10px; } nav a { font-size:12px; } }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <h1>Sahil Kubade</h1>
-  <p>Student | Creator | Learner</p>
+<nav>
+  <div class="logo">Sahil</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#links">Links</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-  <div class="card">
-    <h2>About Me</h2>
-    <p>Hi, I'm Sahil Kubade. My personal website is currently under development. Something exciting is coming soon. Stay tuned!.</p>
+<section class="hero">
+  <div class="avatar">SK</div>
+  <h1>Hi, main <span class="grad">Sahil Kubade</span> hu</h1>
+  <p>Student aur Content Creator. Main naye skills seekh raha hu aur apna kaam online banata hu.</p>
+  <div class="btns">
+    <a class="btn primary" href="#links">Mujhse Judo</a>
+    <a class="btn ghost" href="#about">Mere Baare Me</a>
   </div>
+</section>
 
-  <div class="card">
-    <h2>Mere Links</h2>
-    <a class="btn" href="https://www.instagram.com/sahilkubade_?cplk=MTMyeWU5ZDZtdm4xbw==" target="_blank">Instagram</a></a>
-    <a class="btn" href="https://youtube.com/@yourchannel" target="_blank">YouTube Channel</a>
+<section id="about" class="fade">
+  <h2>About <span class="grad">Me</span></h2>
+  <div class="glass">
+    <p>Main B.Com ka student hu. Mujhe technology aur content banana pasand hai. Ye website meri journey aur kaam dikhane ke liye hai.</p>
   </div>
+</section>
 
-  <div class="card">
-    <h2>Contact</h2>
-    <p>Email: sahilkubade26@gmail.com</p>
+<section id="work" class="fade">
+  <h2>Main <span class="grad">Kya Karta Hu</span></h2>
+  <p class="sub">Kuch cheezein jo main seekh raha hu aur bana raha hu</p>
+  <div class="grid">
+    <div class="glass"><h3>Content Creation</h3><p>Videos aur posts jo logon tak value pahunchayein.</p></div>
+    <div class="glass"><h3>Web Basics</h3><p>HTML aur CSS seekh raha hu, apni website khud bana li hai.</p></div>
+    <div class="glass"><h3>Learning</h3><p>Roz kuch naya seekhna, ek ek skill karke aage badhna.</p></div>
   </div>
+</section>
 
-</div>
+<section id="links" class="fade">
+  <h2>Mere <span class="grad">Links</span></h2>
+  <div class="links">
+    <a href="https://www.instagram.com/sahilkubade_?cplk=MTMyeWU5ZDZtdm4xbw==" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://youtube.com/@yourchannel" target="_blank" rel="noopener">YouTube Channel</a>
+  </div>
+</section>
+
+<section id="contact" class="contact fade">
+  <h2>Contact <span class="grad">Karo</span></h2>
+  <div class="glass">
+    <p>Kaam ke liye ya baat karne ke liye email karo:</p>
+    <p><a href="mailto:yourname@gmail.com">yourname@gmail.com</a></p>
+  </div>
+</section>
+
+<footer>© 2026 Sahil Kubade. Sab adhikar surakshit.</footer>
+
+<script>
+  const items = document.querySelectorAll('.fade');
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+  }, { threshold: 0.15 });
+  items.forEach(i => io.observe(i));
+</script>
 </body>
 </html>
