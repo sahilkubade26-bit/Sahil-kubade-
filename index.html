@@ -33,7 +33,7 @@
   .o3 { width:380px; height:380px; background:var(--up); bottom:-10%; left:25%; opacity:.22; animation-duration:23s; animation-delay:-12s; }
   @keyframes drift { from { transform:translate(0,0) scale(1); } to { transform:translate(70px,-50px) scale(1.18); } }
   #net { position:absolute; inset:0; width:100%; height:100%; }
-  .nav, main, footer { position:relative; z-index:2; }
+  main, footer { position:relative; z-index:2; }
 
   /* Navigation */
   .nav { position:fixed; top:0; left:0; right:0; z-index:20; display:flex; justify-content:space-between; align-items:center;
@@ -58,13 +58,10 @@
   .btn.line { border:1px solid var(--line); color:var(--text); background:rgba(18,35,58,.6); }
   .btn.line:hover { border-color:var(--gold); }
 
-  /* Photo frame */
-  .photo-wrap { position:relative; padding:4px; border-radius:32px; overflow:hidden; animation:bob 6s ease-in-out infinite; box-shadow:0 20px 60px rgba(0,0,0,.45); }
-  .photo-wrap::before { content:""; position:absolute; inset:-50%; background:conic-gradient(from 0deg, var(--gold), transparent 30%, var(--up), transparent 60%, var(--gold)); animation:spin 6s linear infinite; }
-  .photo { position:relative; border-radius:28px; overflow:hidden; background:linear-gradient(145deg,#16304F,#0E1D33); aspect-ratio:4/5; display:grid; place-items:center; }
-  .photo span { font-family:var(--display); font-weight:800; font-size:64px; color:var(--gold); }
-  .photo img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  @keyframes spin { to { transform:rotate(360deg); } }
+  /* Photo frame (circle, plain black border) */
+  .photo-wrap { position:relative; border-radius:50%; border:6px solid #000; overflow:hidden; background:#000; animation:bob 6s ease-in-out infinite; box-shadow:0 20px 60px rgba(0,0,0,.5); }
+  .photo { position:relative; border-radius:50%; overflow:hidden; background:#0E1D33; aspect-ratio:1/1; }
+  .photo img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 15%; display:block; }
   @keyframes bob { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-10px); } }
 
   /* Home hero */
@@ -117,7 +114,7 @@
     .stats b { font-size:26px; }
   }
   @media (prefers-reduced-motion:reduce) {
-    .orb, .photo-wrap, .photo-wrap::before, .candle, .view.active, .card { animation:none; }
+    .orb, .photo-wrap, .candle, .view.active, .card { animation:none; }
     .btn, .card { transition:none; }
   }
 </style>
@@ -161,7 +158,7 @@
           </div>
         </div>
         <div class="photo-wrap">
-          <div class="photo"><span>SK</span><img src="photo.jpg" alt="Sahil Kubade" onerror="this.style.display='none'"></div>
+          <div class="photo"><img src="photo.jpg" alt="Sahil Kubade"></div>
         </div>
       </div>
     </section>
@@ -178,7 +175,7 @@
           <div class="btns next"><a class="btn solid" href="#focus">What I focus on</a></div>
         </div>
         <div class="photo-wrap">
-          <div class="photo"><span>SK</span><img src="photo.jpg" alt="Sahil Kubade" onerror="this.style.display='none'"></div>
+          <div class="photo"><img src="photo.jpg" alt="Sahil Kubade"></div>
         </div>
       </div>
     </div>
