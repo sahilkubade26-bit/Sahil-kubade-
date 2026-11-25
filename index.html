@@ -1,142 +1,185 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sahil Kubade | Portfolio</title>
-<meta name="description" content="Sahil Kubade ki official website">
+<title>Sahil Kubade | Trader & Content Creator</title>
+<meta name="description" content="Sahil Kubade, 19. Building a career in trading and running 4 YouTube channels. Serious work, every single day.">
+<meta property="og:title" content="Sahil Kubade | Trader & Content Creator">
+<meta property="og:description" content="Building a career in trading and running 4 YouTube channels. Serious work, every single day.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0B1626">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1626'/%3E%3Ctext x='32' y='42' font-size='28' font-family='Arial' font-weight='700' text-anchor='middle' fill='%23E0B25A'%3ESK%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg:#0b1020; --card:rgba(255,255,255,0.06); --border:rgba(255,255,255,0.12);
-    --text:#f1f5f9; --muted:#94a3b8; --a1:#6366f1; --a2:#06b6d4;
+    --bg:#0B1626;
+    --surface:#12233A;
+    --line:#23395A;
+    --text:#E8EEF7;
+    --muted:#9DB0CA;
+    --gold:#E0B25A;
+    --up:#2ECC8F;
+    --down:#C8586A;
+    --display:'Bricolage Grotesque','Segoe UI',Arial,sans-serif;
+    --body:'Manrope','Segoe UI',Arial,sans-serif;
   }
   * { box-sizing:border-box; margin:0; padding:0; }
   html { scroll-behavior:smooth; }
   body {
-    font-family:'Poppins',Arial,sans-serif; background:var(--bg); color:var(--text);
-    line-height:1.7; overflow-x:hidden;
-    background-image:radial-gradient(circle at 15% 10%,rgba(99,102,241,.25),transparent 40%),
-                     radial-gradient(circle at 85% 30%,rgba(6,182,212,.18),transparent 40%);
-    background-attachment:fixed;
+    font-family:var(--body); background:var(--bg); color:var(--text);
+    line-height:1.7; font-size:17px; overflow-x:hidden;
   }
-  nav {
-    position:fixed; top:0; width:100%; z-index:10; display:flex; justify-content:space-between;
-    align-items:center; padding:14px 20px; background:rgba(11,16,32,.8);
-    backdrop-filter:blur(10px); border-bottom:1px solid var(--border);
+  a { color:inherit; }
+  :focus-visible { outline:2px solid var(--gold); outline-offset:3px; border-radius:4px; }
+
+  /* Navigation */
+  .nav {
+    position:fixed; top:0; left:0; right:0; z-index:20;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:16px clamp(20px,5vw,56px);
+    background:rgba(11,22,38,.82); backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
   }
-  .logo { font-weight:700; font-size:18px; background:linear-gradient(90deg,var(--a1),var(--a2));
-    -webkit-background-clip:text; background-clip:text; color:transparent; }
-  nav ul { list-style:none; display:flex; gap:16px; }
-  nav a { color:var(--muted); text-decoration:none; font-size:14px; }
-  nav a:hover { color:var(--text); }
-  section { max-width:900px; margin:0 auto; padding:90px 20px 30px; }
-  .hero { text-align:center; padding-top:130px; }
-  .avatar {
-    width:110px; height:110px; border-radius:50%; margin:0 auto 20px; display:flex;
-    align-items:center; justify-content:center; font-size:38px; font-weight:700;
-    background:linear-gradient(135deg,var(--a1),var(--a2)); box-shadow:0 0 40px rgba(99,102,241,.5);
+  .brand { font-family:var(--display); font-weight:800; font-size:19px; text-decoration:none; letter-spacing:.2px; }
+  .nav ul { list-style:none; display:flex; gap:clamp(14px,3vw,30px); }
+  .nav ul a { color:var(--muted); text-decoration:none; font-size:15px; font-weight:500; transition:color .2s; }
+  .nav ul a:hover { color:var(--text); }
+
+  /* Hero */
+  .hero {
+    position:relative; min-height:100svh; overflow:hidden;
+    display:flex; flex-direction:column; justify-content:center;
+    padding:120px clamp(20px,5vw,56px) 200px;
   }
-  .hero h1 { font-size:clamp(32px,8vw,56px); line-height:1.2; }
-  .grad { background:linear-gradient(90deg,var(--a1),var(--a2));
-    -webkit-background-clip:text; background-clip:text; color:transparent; }
-  .hero p { color:var(--muted); margin:16px auto 28px; max-width:520px; }
-  .btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+  .hero-inner { position:relative; z-index:2; max-width:760px; }
+  .hero h1 {
+    font-family:var(--display); font-weight:800; line-height:1.05;
+    font-size:clamp(40px,8.5vw,84px); letter-spacing:-1.5px;
+  }
+  .hero .lead { margin-top:24px; max-width:560px; color:var(--muted); font-size:clamp(17px,2.4vw,20px); }
+  .hero .lead strong { color:var(--text); font-weight:600; }
+  .btns { display:flex; flex-wrap:wrap; gap:14px; margin-top:36px; }
   .btn {
-    padding:12px 26px; border-radius:999px; text-decoration:none; font-weight:600; font-size:15px;
-    transition:transform .2s;
+    display:inline-block; padding:14px 28px; border-radius:10px; text-decoration:none;
+    font-weight:600; font-size:16px; transition:transform .2s, background .2s, border-color .2s;
   }
-  .btn:hover { transform:translateY(-3px); }
-  .btn.primary { background:linear-gradient(90deg,var(--a1),var(--a2)); color:#fff; }
-  .btn.ghost { border:1px solid var(--border); color:var(--text); background:var(--card); }
-  h2 { font-size:28px; margin-bottom:18px; text-align:center; }
-  .sub { color:var(--muted); text-align:center; margin-bottom:28px; }
-  .glass {
-    background:var(--card); border:1px solid var(--border); border-radius:16px; padding:22px;
-    backdrop-filter:blur(8px);
+  .btn:hover { transform:translateY(-2px); }
+  .btn.solid { background:var(--gold); color:#1A1305; }
+  .btn.solid:hover { background:#EBC174; }
+  .btn.line { border:1px solid var(--line); color:var(--text); background:rgba(18,35,58,.6); }
+  .btn.line:hover { border-color:var(--gold); }
+
+  .chart {
+    position:absolute; left:0; right:0; bottom:0; width:100%; height:62%;
+    z-index:1; pointer-events:none;
   }
-  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
-  .glass h3 { font-size:18px; margin-bottom:6px; }
-  .glass p { color:var(--muted); font-size:14px; }
-  .links { display:flex; flex-direction:column; gap:12px; max-width:420px; margin:0 auto; }
-  .links a {
-    display:block; text-align:center; padding:14px; border-radius:12px; text-decoration:none;
-    color:var(--text); background:var(--card); border:1px solid var(--border); font-weight:500;
-    transition:all .2s;
+  .hero::after {
+    content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:linear-gradient(90deg, var(--bg) 8%, rgba(11,22,38,.55) 55%, rgba(11,22,38,0) 100%);
   }
-  .links a:hover { border-color:var(--a1); transform:translateY(-2px); }
-  .contact { text-align:center; }
-  .contact a { color:var(--a2); text-decoration:none; }
-  footer { text-align:center; color:var(--muted); font-size:13px; padding:40px 20px; }
-  .fade { opacity:0; transform:translateY(24px); transition:all .7s ease; }
-  .fade.show { opacity:1; transform:none; }
-  @media (max-width:520px) { nav ul { gap:10px; } nav a { font-size:12px; } }
+  .candle { transform-box:fill-box; transform-origin:50% 100%; animation:rise .6s cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes rise { from { transform:scaleY(0); opacity:0; } to { transform:scaleY(1); opacity:1; } }
+
+  /* Sections */
+  section.block { max-width:1000px; margin:0 auto; padding:96px clamp(20px,5vw,40px) 0; }
+  h2 { font-family:var(--display); font-weight:800; font-size:clamp(30px,5vw,44px); line-height:1.15; letter-spacing:-.8px; margin-bottom:28px; }
+  .about p { font-size:clamp(18px,2.4vw,22px); line-height:1.75; color:var(--text); max-width:720px; }
+  .about p + p { margin-top:20px; color:var(--muted); font-size:clamp(17px,2.2vw,19px); }
+
+  .rows { border-top:1px solid var(--line); }
+  .row {
+    display:grid; grid-template-columns:minmax(150px,1fr) 2fr; gap:12px 40px;
+    padding:30px 0; border-bottom:1px solid var(--line);
+  }
+  .row h3 { font-family:var(--display); font-weight:600; font-size:24px; }
+  .row p { color:var(--muted); max-width:560px; }
+
+  .connect { text-align:left; }
+  .connect p.sub { color:var(--muted); max-width:520px; margin-bottom:30px; }
+
+  footer { max-width:1000px; margin:96px auto 0; padding:28px clamp(20px,5vw,40px) 40px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; }
+
+  @media (max-width:640px) {
+    body { font-size:16px; }
+    .row { grid-template-columns:1fr; gap:8px; padding:24px 0; }
+    .hero { padding-bottom:160px; }
+    .hero::after { background:linear-gradient(180deg, rgba(11,22,38,.2) 0%, rgba(11,22,38,.75) 100%); }
+    .chart { height:45%; }
+    .nav ul a { font-size:14px; }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    html { scroll-behavior:auto; }
+    .candle { animation:none; }
+    .btn { transition:none; }
+  }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="logo">Sahil</div>
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#links">Links</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+<header class="nav">
+  <a class="brand" href="#top">Sahil Kubade</a>
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#focus">Focus</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+  </nav>
+</header>
 
-<section class="hero">
-  <div class="avatar">SK</div>
-  <h1>Hi, main <span class="grad">Sahil Kubade</span> hu</h1>
-  <p>Student aur Content Creator. Main naye skills seekh raha hu aur apna kaam online banata hu.</p>
-  <div class="btns">
-    <a class="btn primary" href="#links">Mujhse Judo</a>
-    <a class="btn ghost" href="#about">Mere Baare Me</a>
-  </div>
-</section>
+<main id="top">
+  <section class="hero">
+    <svg class="chart" id="chart" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false"></svg>
+    <div class="hero-inner">
+      <h1>Trading is my career. Building is my daily work.</h1>
+      <p class="lead">I’m <strong>Sahil Kubade, 19</strong>. I run <strong>4 YouTube channels</strong> of my own and I’m building my career in trading. This is full-time effort, not a hobby.</p>
+      <div class="btns">
+        <a class="btn solid" href="#focus">See what I do</a>
+        <a class="btn line" href="https://www.instagram.com/sahilkubade_?cplk=MTMyeWU5ZDZtdm4xbw==" target="_blank" rel="noopener">Message on Instagram</a>
+      </div>
+    </div>
+  </section>
 
-<section id="about" class="fade">
-  <h2>About <span class="grad">Me</span></h2>
-  <div class="glass">
-    <p>Main B.Com ka student hu. Mujhe technology aur content banana pasand hai. Ye website meri journey aur kaam dikhane ke liye hai.</p>
-  </div>
-</section>
+  <section class="block about" id="about">
+    <h2>About me</h2>
+    <p>I started early because I want to be good at something, not just busy. At 19, I treat trading and content creation as real work that deserves real discipline.</p>
+    <p>I study the markets, create content for four channels that I own, and keep improving every day. Alongside this, I’m studying B.Com, which keeps my understanding of business and finance strong.</p>
+  </section>
 
-<section id="work" class="fade">
-  <h2>Main <span class="grad">Kya Karta Hu</span></h2>
-  <p class="sub">Kuch cheezein jo main seekh raha hu aur bana raha hu</p>
-  <div class="grid">
-    <div class="glass"><h3>Content Creation</h3><p>Videos aur posts jo logon tak value pahunchayein.</p></div>
-    <div class="glass"><h3>Web Basics</h3><p>HTML aur CSS seekh raha hu, apni website khud bana li hai.</p></div>
-    <div class="glass"><h3>Learning</h3><p>Roz kuch naya seekhna, ek ek skill karke aage badhna.</p></div>
-  </div>
-</section>
+  <section class="block" id="focus">
+    <h2>What I focus on</h2>
+    <div class="rows">
+      <div class="row">
+        <h3>Trading</h3>
+        <p>My main career path. I’m learning the markets seriously, with risk management and discipline at the centre of everything.</p>
+      </div>
+      <div class="row">
+        <h3>YouTube channels</h3>
+        <p>I own and run 4 channels. I handle the content myself and keep getting better with every upload.</p>
+      </div>
+      <div class="row">
+        <h3>Consistency</h3>
+        <p>No shortcuts. I show up every day, track my progress and keep learning, because real results come from consistency.</p>
+      </div>
+    </div>
+  </section>
 
-<section id="links" class="fade">
-  <h2>Mere <span class="grad">Links</span></h2>
-  <div class="links">
-    <a href="https://www.instagram.com/sahilkubade_?cplk=MTMyeWU5ZDZtdm4xbw==" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://youtube.com/@yourchannel" target="_blank" rel="noopener">YouTube Channel</a>
-  </div>
-</section>
+  <section class="block connect" id="connect">
+    <h2>Let’s connect</h2>
+    <p class="sub">For collaboration, business enquiries or just a conversation, reach out on any of these.</p>
+    <div class="btns">
+      <a class="btn solid" href="https://www.instagram.com/sahilkubade_?cplk=MTMyeWU5ZDZtdm4xbw==" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn line" href="https://youtube.com/@yourchannel" target="_blank" rel="noopener">YouTube</a>
+      <a class="btn line" href="mailto:yourname@gmail.com">Email</a>
+    </div>
+  </section>
+</main>
 
-<section id="contact" class="contact fade">
-  <h2>Contact <span class="grad">Karo</span></h2>
-  <div class="glass">
-    <p>Kaam ke liye ya baat karne ke liye email karo:</p>
-    <p><a href="mailto:yourname@gmail.com">yourname@gmail.com</a></p>
-  </div>
-</section>
-
-<footer>© 2026 Sahil Kubade. Sab adhikar surakshit.</footer>
+<footer>© 2026 Sahil Kubade. All rights reserved.</footer>
 
 <script>
-  const items = document.querySelectorAll('.fade');
-  const io = new IntersectionObserver(es => {
-    es.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
-  }, { threshold: 0.15 });
-  items.forEach(i => io.observe(i));
-</script>
-</body>
-</html>
+  // Candlestick chart for the hero (one entrance animation on load)
+  (funct
