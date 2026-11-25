@@ -15,92 +15,62 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg:#0B1626;
-    --surface:#12233A;
-    --line:#23395A;
-    --text:#E8EEF7;
-    --muted:#9DB0CA;
-    --gold:#E0B25A;
-    --up:#2ECC8F;
-    --down:#C8586A;
+    --bg:#0B1626; --surface:#12233A; --line:#23395A; --text:#E8EEF7; --muted:#9DB0CA;
+    --gold:#E0B25A; --up:#2ECC8F; --down:#C8586A;
     --display:'Bricolage Grotesque','Segoe UI',Arial,sans-serif;
     --body:'Manrope','Segoe UI',Arial,sans-serif;
   }
   * { box-sizing:border-box; margin:0; padding:0; }
-  html { scroll-behavior:smooth; }
-  body {
-    font-family:var(--body); background:var(--bg); color:var(--text);
-    line-height:1.7; font-size:17px; overflow-x:hidden;
-  }
+  body { font-family:var(--body); background:var(--bg); color:var(--text); line-height:1.7; font-size:17px; overflow-x:hidden; }
   a { color:inherit; }
   :focus-visible { outline:2px solid var(--gold); outline-offset:3px; border-radius:4px; }
 
   /* Navigation */
-  .nav {
-    position:fixed; top:0; left:0; right:0; z-index:20;
-    display:flex; justify-content:space-between; align-items:center;
-    padding:16px clamp(20px,5vw,56px);
-    background:rgba(11,22,38,.82); backdrop-filter:blur(12px);
-    border-bottom:1px solid var(--line);
-  }
-  .brand { font-family:var(--display); font-weight:800; font-size:19px; text-decoration:none; letter-spacing:.2px; }
-  .nav ul { list-style:none; display:flex; gap:clamp(14px,3vw,30px); }
-  .nav ul a { color:var(--muted); text-decoration:none; font-size:15px; font-weight:500; transition:color .2s; }
+  .nav { position:fixed; top:0; left:0; right:0; z-index:20; display:flex; justify-content:space-between; align-items:center;
+    padding:16px clamp(20px,5vw,56px); background:rgba(11,22,38,.85); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
+  .brand { font-family:var(--display); font-weight:800; font-size:19px; text-decoration:none; }
+  .nav ul { list-style:none; display:flex; gap:clamp(12px,3vw,30px); }
+  .nav ul a { color:var(--muted); text-decoration:none; font-size:15px; font-weight:500; padding-bottom:4px; border-bottom:2px solid transparent; transition:color .2s; }
   .nav ul a:hover { color:var(--text); }
+  .nav ul a[aria-current="page"] { color:var(--text); border-bottom-color:var(--gold); }
 
-  /* Hero */
-  .hero {
-    position:relative; min-height:100svh; overflow:hidden;
-    display:flex; flex-direction:column; justify-content:center;
-    padding:120px clamp(20px,5vw,56px) 200px;
-  }
-  .hero-inner { position:relative; z-index:2; max-width:760px; }
-  .hero h1 {
-    font-family:var(--display); font-weight:800; line-height:1.05;
-    font-size:clamp(40px,8.5vw,84px); letter-spacing:-1.5px;
-  }
-  .hero .lead { margin-top:24px; max-width:560px; color:var(--muted); font-size:clamp(17px,2.4vw,20px); }
-  .hero .lead strong { color:var(--text); font-weight:600; }
+  /* Page switching */
+  .view { display:none; }
+  .view.active { display:block; animation:fade .35s ease both; }
+  @keyframes fade { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+
+  /* Buttons */
   .btns { display:flex; flex-wrap:wrap; gap:14px; margin-top:36px; }
-  .btn {
-    display:inline-block; padding:14px 28px; border-radius:10px; text-decoration:none;
-    font-weight:600; font-size:16px; transition:transform .2s, background .2s, border-color .2s;
-  }
+  .btn { display:inline-block; padding:14px 28px; border-radius:10px; text-decoration:none; font-weight:600; font-size:16px; transition:transform .2s, background .2s, border-color .2s; }
   .btn:hover { transform:translateY(-2px); }
   .btn.solid { background:var(--gold); color:#1A1305; }
   .btn.solid:hover { background:#EBC174; }
   .btn.line { border:1px solid var(--line); color:var(--text); background:rgba(18,35,58,.6); }
   .btn.line:hover { border-color:var(--gold); }
 
-  .chart {
-    position:absolute; left:0; right:0; bottom:0; width:100%; height:62%;
-    z-index:1; pointer-events:none;
-  }
-  .hero::after {
-    content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
-    background:linear-gradient(90deg, var(--bg) 8%, rgba(11,22,38,.55) 55%, rgba(11,22,38,0) 100%);
-  }
+  /* Home hero */
+  .hero { position:relative; min-height:100svh; overflow:hidden; display:flex; flex-direction:column; justify-content:center; padding:120px clamp(20px,5vw,56px) 200px; }
+  .hero-inner { position:relative; z-index:2; max-width:760px; }
+  .hero h1 { font-family:var(--display); font-weight:800; line-height:1.05; font-size:clamp(40px,8.5vw,84px); letter-spacing:-1.5px; }
+  .hero .lead { margin-top:24px; max-width:560px; color:var(--muted); font-size:clamp(17px,2.4vw,20px); }
+  .hero .lead strong { color:var(--text); font-weight:600; }
+  .chart { position:absolute; left:0; right:0; bottom:0; width:100%; height:62%; z-index:1; pointer-events:none; }
+  .hero::after { content:""; position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(90deg, var(--bg) 8%, rgba(11,22,38,.55) 55%, rgba(11,22,38,0) 100%); }
   .candle { transform-box:fill-box; transform-origin:50% 100%; animation:rise .6s cubic-bezier(.2,.8,.2,1) both; }
   @keyframes rise { from { transform:scaleY(0); opacity:0; } to { transform:scaleY(1); opacity:1; } }
 
-  /* Sections */
-  section.block { max-width:1000px; margin:0 auto; padding:96px clamp(20px,5vw,40px) 0; }
-  h2 { font-family:var(--display); font-weight:800; font-size:clamp(30px,5vw,44px); line-height:1.15; letter-spacing:-.8px; margin-bottom:28px; }
-  .about p { font-size:clamp(18px,2.4vw,22px); line-height:1.75; color:var(--text); max-width:720px; }
+  /* Inner pages */
+  .page { max-width:1000px; margin:0 auto; padding:140px clamp(20px,5vw,40px) 40px; min-height:calc(100svh - 90px); }
+  h1.title { font-family:var(--display); font-weight:800; font-size:clamp(34px,6vw,56px); line-height:1.1; letter-spacing:-1px; margin-bottom:32px; }
+  .about p { font-size:clamp(18px,2.4vw,22px); line-height:1.75; max-width:720px; }
   .about p + p { margin-top:20px; color:var(--muted); font-size:clamp(17px,2.2vw,19px); }
-
   .rows { border-top:1px solid var(--line); }
-  .row {
-    display:grid; grid-template-columns:minmax(150px,1fr) 2fr; gap:12px 40px;
-    padding:30px 0; border-bottom:1px solid var(--line);
-  }
+  .row { display:grid; grid-template-columns:minmax(150px,1fr) 2fr; gap:12px 40px; padding:30px 0; border-bottom:1px solid var(--line); }
   .row h3 { font-family:var(--display); font-weight:600; font-size:24px; }
   .row p { color:var(--muted); max-width:560px; }
-
-  .connect { text-align:left; }
-  .connect p.sub { color:var(--muted); max-width:520px; margin-bottom:30px; }
-
-  footer { max-width:1000px; margin:96px auto 0; padding:28px clamp(20px,5vw,40px) 40px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; }
+  .sub { color:var(--muted); max-width:520px; }
+  .next { margin-top:48px; }
+  footer { max-width:1000px; margin:40px auto 0; padding:28px clamp(20px,5vw,40px) 40px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; }
 
   @media (max-width:640px) {
     body { font-size:16px; }
@@ -109,77 +79,133 @@
     .hero::after { background:linear-gradient(180deg, rgba(11,22,38,.2) 0%, rgba(11,22,38,.75) 100%); }
     .chart { height:45%; }
     .nav ul a { font-size:14px; }
+    .brand { font-size:17px; }
   }
-  @media (prefers-reduced-motion:reduce) {
-    html { scroll-behavior:auto; }
-    .candle { animation:none; }
-    .btn { transition:none; }
-  }
+  @media (prefers-reduced-motion:reduce) { .candle, .view.active { animation:none; } .btn { transition:none; } }
 </style>
 </head>
 <body>
 
 <header class="nav">
-  <a class="brand" href="#top">Sahil Kubade</a>
+  <a class="brand" href="#home">Sahil Kubade</a>
   <nav aria-label="Main">
     <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#focus">Focus</a></li>
-      <li><a href="#connect">Connect</a></li>
+      <li><a href="#home" data-link="home">Home</a></li>
+      <li><a href="#about" data-link="about">About</a></li>
+      <li><a href="#focus" data-link="focus">Focus</a></li>
+      <li><a href="#connect" data-link="connect">Connect</a></li>
     </ul>
   </nav>
 </header>
 
-<main id="top">
-  <section class="hero">
-    <svg class="chart" id="chart" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false"></svg>
-    <div class="hero-inner">
-      <h1>Trading is my career. Building is my daily work.</h1>
-      <p class="lead">I’m <strong>Sahil Kubade, 19</strong>. I run <strong>4 YouTube channels</strong> of my own and I’m building my career in trading. This is full-time effort, not a hobby.</p>
+<main>
+  <!-- HOME -->
+  <div class="view" id="home">
+    <section class="hero">
+      <svg class="chart" id="chart" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false"></svg>
+      <div class="hero-inner">
+        <h1>Trading is my career. Building is my daily work.</h1>
+        <p class="lead">I’m <strong>Sahil Kubade, 19</strong>. I run <strong>4 YouTube channels</strong> of my own and I’m building my career in trading. This is full-time effort, not a hobby.</p>
+        <div class="btns">
+          <a class="btn solid" href="#focus">See what I do</a>
+          <a class="btn line" href="https://www.instagram.com/sahilkubade_?cplk=MTMyeWU5ZDZtdm4xbw==" target="_blank" rel="noopener">Message on Instagram</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="view" id="about">
+    <div class="page about">
+      <h1 class="title">About me</h1>
+      <p>I started early because I want to be good at something, not just busy. At 19, I treat trading and content creation as real work that deserves real discipline.</p>
+      <p>I study the markets, create content for four channels that I own, and keep improving every day. Alongside this, I’m studying B.Com, which keeps my understanding of business and finance strong.</p>
+      <div class="btns next"><a class="btn solid" href="#focus">What I focus on</a></div>
+    </div>
+    <footer>© 2026 Sahil Kubade. All rights reserved.</footer>
+  </div>
+
+  <!-- FOCUS -->
+  <div class="view" id="focus">
+    <div class="page">
+      <h1 class="title">What I focus on</h1>
+      <div class="rows">
+        <div class="row"><h3>Trading</h3><p>My main career path. I’m learning the markets seriously, with risk management and discipline at the centre of everything.</p></div>
+        <div class="row"><h3>YouTube channels</h3><p>I own and run 4 channels. I handle the content myself and keep getting better with every upload.</p></div>
+        <div class="row"><h3>Consistency</h3><p>No shortcuts. I show up every day, track my progress and keep learning, because real results come from consistency.</p></div>
+      </div>
+      <div class="btns next"><a class="btn solid" href="#connect">Let’s connect</a></div>
+    </div>
+    <footer>© 2026 Sahil Kubade. All rights reserved.</footer>
+  </div>
+
+  <!-- CONNECT -->
+  <div class="view" id="connect">
+    <div class="page">
+      <h1 class="title">Let’s connect</h1>
+      <p class="sub">For collaboration, business enquiries or just a conversation, reach out on any of these.</p>
       <div class="btns">
-        <a class="btn solid" href="#focus">See what I do</a>
-        <a class="btn line" href="https://www.instagram.com/sahilkubade_?cplk=MTMyeWU5ZDZtdm4xbw==" target="_blank" rel="noopener">Message on Instagram</a>
+        <a class="btn solid" href="https://www.instagram.com/sahilkubade_?cplk=MTMyeWU5ZDZtdm4xbw==" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn line" href="https://youtube.com/@yourchannel" target="_blank" rel="noopener">YouTube</a>
+        <a class="btn line" href="mailto:yourname@gmail.com">Email</a>
       </div>
     </div>
-  </section>
-
-  <section class="block about" id="about">
-    <h2>About me</h2>
-    <p>I started early because I want to be good at something, not just busy. At 19, I treat trading and content creation as real work that deserves real discipline.</p>
-    <p>I study the markets, create content for four channels that I own, and keep improving every day. Alongside this, I’m studying B.Com, which keeps my understanding of business and finance strong.</p>
-  </section>
-
-  <section class="block" id="focus">
-    <h2>What I focus on</h2>
-    <div class="rows">
-      <div class="row">
-        <h3>Trading</h3>
-        <p>My main career path. I’m learning the markets seriously, with risk management and discipline at the centre of everything.</p>
-      </div>
-      <div class="row">
-        <h3>YouTube channels</h3>
-        <p>I own and run 4 channels. I handle the content myself and keep getting better with every upload.</p>
-      </div>
-      <div class="row">
-        <h3>Consistency</h3>
-        <p>No shortcuts. I show up every day, track my progress and keep learning, because real results come from consistency.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="block connect" id="connect">
-    <h2>Let’s connect</h2>
-    <p class="sub">For collaboration, business enquiries or just a conversation, reach out on any of these.</p>
-    <div class="btns">
-      <a class="btn solid" href="https://www.instagram.com/sahilkubade_?cplk=MTMyeWU5ZDZtdm4xbw==" target="_blank" rel="noopener">Instagram</a>
-      <a class="btn line" href="https://youtube.com/@yourchannel" target="_blank" rel="noopener">YouTube</a>
-      <a class="btn line" href="mailto:yourname@gmail.com">Email</a>
-    </div>
-  </section>
+    <footer>© 2026 Sahil Kubade. All rights reserved.</footer>
+  </div>
 </main>
 
-<footer>© 2026 Sahil Kubade. All rights reserved.</footer>
-
 <script>
-  // Candlestick chart for the hero (one entrance animation on load)
-  (funct
+  // ---- Candlestick chart (home hero) ----
+  function drawChart() {
+    var svg = document.getElementById('chart');
+    var seed = 20260;
+    function rnd() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+    var n = 46, data = [], price = 100;
+    for (var i = 0; i < n; i++) {
+      var open = price, close = open + (rnd() - 0.40) * 26;
+      data.push({ o: open, c: close, h: Math.max(open, close) + rnd() * 12, l: Math.min(open, close) - rnd() * 12 });
+      price = close;
+    }
+    var min = Infinity, max = -Infinity;
+    data.forEach(function (d) { min = Math.min(min, d.l); max = Math.max(max, d.h); });
+    function y(v) { return 380 - ((v - min) / (max - min)) * 330; }
+    var step = 1200 / n, bodyW = step * 0.56, out = '';
+    data.forEach(function (d, i) {
+      var x = i * step + step / 2, color = d.c >= d.o ? 'var(--up)' : 'var(--down)';
+      var top = y(Math.max(d.o, d.c)), h = Math.max(y(Math.min(d.o, d.c)) - top, 2);
+      out += '<g class="candle" style="animation-delay:' + (i * 45) + 'ms" opacity="0.9">' +
+        '<line x1="' + x + '" x2="' + x + '" y1="' + y(d.h) + '" y2="' + y(d.l) + '" stroke="' + color + '" stroke-width="2"/>' +
+        '<rect x="' + (x - bodyW / 2) + '" y="' + top + '" width="' + bodyW + '" height="' + h + '" rx="1.5" fill="' + color + '"/></g>';
+    });
+    svg.innerHTML = out;
+  }
+
+  // ---- Page switching ----
+  var pages = ['home', 'about', 'focus', 'connect'];
+  var titles = {
+    home: 'Sahil Kubade | Trader & Content Creator',
+    about: 'About | Sahil Kubade',
+    focus: 'Focus | Sahil Kubade',
+    connect: 'Connect | Sahil Kubade'
+  };
+
+  function showPage() {
+    var name = location.hash.replace('#', '');
+    if (pages.indexOf(name) === -1) name = 'home';
+    pages.forEach(function (p) {
+      document.getElementById(p).classList.toggle('active', p === name);
+    });
+    document.querySelectorAll('[data-link]').forEach(function (a) {
+      if (a.getAttribute('data-link') === name) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+    document.title = titles[name];
+    if (name === 'home') drawChart();
+    window.scrollTo(0, 0);
+  }
+
+  window.addEventListener('hashchange', showPage);
+  showPage();
+</script>
+</body>
+</html>
